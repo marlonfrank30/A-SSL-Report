@@ -1,5 +1,6 @@
 for A
 ![](./images/A-SSL-Labs.PNG)
+```
 root@(apm1)(cfg-sync Standalone)(Active)(/Common)(tmos)# list ltm profile client-ssl SSL_Qualys_A
 ltm profile client-ssl SSL_Qualys_A {
     app-service none
@@ -20,11 +21,11 @@ ltm profile client-ssl SSL_Qualys_A {
     key test_2022
     passphrase none
 }
-
+```
 
 A+
 ![](./images/A+SSL-Labs.PNG)
-
+```
 root@(apm1)(cfg-sync Standalone)(Active)(/Common)(tmos)# list ltm profile client-ssl SSL_Qualys_A
 ltm profile client-ssl SSL_Qualys_A {
     app-service none
@@ -45,9 +46,9 @@ ltm profile client-ssl SSL_Qualys_A {
     key test_2022
     passphrase none
 }
-
+```
 HTTP profile using HSTS (enabled)
-
+```
 root@(apm1)(cfg-sync Standalone)(Active)(/Common)(tmos)# list ltm profile http http_XFF
 ltm profile http http_XFF {
   app-service none
@@ -61,3 +62,4 @@ ltm profile http http_XFF {
   proxy-type reverse
   response-chunking rechunk
 }
+```
