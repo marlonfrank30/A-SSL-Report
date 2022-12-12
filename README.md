@@ -1,5 +1,5 @@
 for A
-![](./A-SSL-Labs.PNG)
+![](./images/A-SSL-Labs.PNG)
 root@(apm1)(cfg-sync Standalone)(Active)(/Common)(tmos)# list ltm profile client-ssl SSL_Qualys_A
 ltm profile client-ssl SSL_Qualys_A {
     app-service none
@@ -23,7 +23,7 @@ ltm profile client-ssl SSL_Qualys_A {
 
 
 A+
-![](./A+SSL-Labs.PNG)
+![](./images/A+SSL-Labs.PNG)
 
 root@(apm1)(cfg-sync Standalone)(Active)(/Common)(tmos)# list ltm profile client-ssl SSL_Qualys_A
 ltm profile client-ssl SSL_Qualys_A {
