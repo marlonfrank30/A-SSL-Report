@@ -1,4 +1,4 @@
-A SSL Labs Report
+**A SSL Labs Report**
 ![](./images/A-SSL-Labs.PNG)
 ```
 root@(apm1)(cfg-sync Standalone)(Active)(/Common)(tmos)# list ltm profile client-ssl SSL_Qualys_A
@@ -23,7 +23,7 @@ ltm profile client-ssl SSL_Qualys_A {
 }
 ```
 
-A+ SSL Labs Report 
+**A+ SSL Labs Report **
 ![](./images/A+SSL-Labs.PNG)
 ```
 root@(apm1)(cfg-sync Standalone)(Active)(/Common)(tmos)# list ltm profile client-ssl SSL_Qualys_A
