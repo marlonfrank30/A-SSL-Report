@@ -66,7 +66,7 @@ ltm profile http http_XFF {
 
 **A+ SSL Labs Report using TLS1.3**
 ![](./images/A+SSL-Labs.PNG)
-For TLS1.3 please note that f5 has changed its approach now. Administrators need to use cipher rules in combination with cipher groups in order to hard code the desired cipher,hashes, exchange keys combos, etc. 
+For TLS1.3 please note that f5 has changed its approach now. Administrators need to use cipher rules in combination with cipher groups in order to hard code the desired cipher, hashes, exchange keys combos, etc. 
 root@(apm1)(cfg-sync Standalone)(Active)(/Common)(tmos)# list ltm cipher group Qualys-SSL-A all-properties
 ```
 ltm cipher group Qualys-SSL-A {
