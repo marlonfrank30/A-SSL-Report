@@ -92,3 +92,75 @@ ltm cipher rule SSL-Labs-A {
     signature-algorithms DEFAULT
 }
 ```
+```
+root@(apm1)(cfg-sync Standalone)(Active)(/Common)(tmos)# list ltm profile http http_XFF all-properties
+ltm profile http http_XFF {
+    accept-xff disabled
+    app-service none
+    basic-auth-realm none
+    defaults-from http
+    description none
+    encrypt-cookie-secret none
+    encrypt-cookies none
+    enforcement {
+        allow-ws-header-name disabled
+        excess-client-headers reject
+        excess-server-headers reject
+        known-methods { CONNECT DELETE GET HEAD LOCK OPTIONS POST PROPFIND PUT TRACE UNLOCK }
+        max-header-count 1024
+        max-header-size 32768
+        max-requests 0
+        oversize-client-headers reject
+        oversize-server-headers reject
+        pipeline allow
+        rfc-compliance disabled
+        truncated-redirects disabled
+        unknown-method allow
+    }
+    explicit-proxy {
+        bad-request-message none
+        bad-response-message none
+        connect-error-message none
+        default-connect-handling deny
+        dns-error-message none
+        dns-resolver none
+        host-names none
+        ipv6 no
+        route-domain none
+        tunnel-name none
+        tunnel-on-any-request no
+    }
+    fallback-host none
+    fallback-status-codes none
+    header-erase none
+    header-insert none
+    hsts {
+        include-subdomains enabled
+        maximum-age 15779000
+        mode enabled
+        preload enabled
+    }
+    insert-xforwarded-for enabled
+    lws-separator none
+    lws-width 80
+    oneconnect-status-reuse "200 206"
+    oneconnect-transformations enabled
+    partition Common
+    proxy-type reverse
+    redirect-rewrite none
+    request-chunking sustain
+    response-chunking rechunk
+    response-headers-permitted none
+    server-agent-name BigIP
+    sflow {
+        poll-interval 0
+        poll-interval-global yes
+        sampling-rate 0
+        sampling-rate-global yes
+    }
+    via-host-name none
+    via-request preserve
+    via-response preserve
+    xff-alternative-names none
+}
+```
