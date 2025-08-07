@@ -134,12 +134,12 @@ ltm profile http http_XFF {
     fallback-status-codes none
     header-erase none
     header-insert none
-**    hsts {
+    hsts {
         include-subdomains enabled
         maximum-age 15779000
         mode enabled
         preload enabled
-    }**
+    }
     insert-xforwarded-for enabled
     lws-separator none
     lws-width 80
