@@ -1,3 +1,16 @@
+The diagram now visualizes how these components interact within the F5 BIG-IP SSL termination layer, showing the flow from client connections through cipher negotiation, key exchange, and hash verification to the backend servers, while explicitly showing which weak algorithms are blocked.
+
+Key Components:
+
+Cipher Selection - TLS 1.3 and 1.2 approved cipher suites
+Key Exchange - ECDHE with Perfect Forward Secrecy
+Hash Algorithms - SHA256/SHA384 (strong hashing only)
+Security Headers - HSTS configuration
+SSL Labs Grading - Scanner integration point
+
+<img width="1162" height="1245" alt="image" src="https://github.com/user-attachments/assets/913d3a28-9afc-46ac-9a77-12384a11887a" />
+
+
 **A SSL Labs Report using TLS1.2**
 ![](./images/A-SSL-Labs.PNG)
 ```
