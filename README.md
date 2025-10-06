@@ -8,7 +8,7 @@ Hash Algorithms - SHA256/SHA384 (strong hashing only)
 Security Headers - HSTS configuration
 SSL Labs Grading - Scanner integration point
 
-<img width="1162" height="1245" alt="image" src="https://github.com/user-attachments/assets/913d3a28-9afc-46ac-9a77-12384a11887a" />
+![](./images/components.png)
 
 
 **A SSL Labs Report using TLS1.2**
