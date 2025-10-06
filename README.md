@@ -2,11 +2,11 @@ The diagram now visualizes how these components interact within the F5 BIG-IP SS
 
 Key Components:
 
-Cipher Selection - TLS 1.3 and 1.2 approved cipher suites
-Key Exchange - ECDHE with Perfect Forward Secrecy
-Hash Algorithms - SHA256/SHA384 (strong hashing only)
-Security Headers - HSTS configuration
-SSL Labs Grading - Scanner integration point
+Cipher Selection - TLS 1.3 and 1.2 approved cipher suites <br>
+Key Exchange - ECDHE with Perfect Forward Secrecy <br>
+Hash Algorithms - SHA256/SHA384 (strong hashing only) <br>
+Security Headers - HSTS configuration <br>
+SSL Labs Grading - Scanner integration point <br>
 
 ![](./images/components.png)
 
