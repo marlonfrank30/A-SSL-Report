@@ -1,6 +1,6 @@
 The diagram below visualizes how the components interact within the F5 BIG-IP SSL termination layer, showing the flow from client connections through cipher negotiation, key exchange, and hash verification to the backend servers, while explicitly showing which weak algorithms are blocked.
 
-Key Components:
+**Key Components:**
 
 **Cipher Selection - TLS 1.3 and 1.2 approved cipher suites <br>
 Key Exchange - ECDHE with Perfect Forward Secrecy <br>
