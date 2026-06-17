@@ -126,6 +126,27 @@ tmsh list ltm profile client-ssl
 ```
 
 ---
+## BIG-IP Configuration
+```
+root@(apm1)(cfg-sync Standalone)(ModuleNotLicensed::Active)(/Common)(tmos)# list ltm cipher rule PQC all-properties
+ltm cipher rule PQC {
+    app-service none
+    cipher DEFAULT
+    description none
+    dh-groups X25519MLKEM768:P256MLKEM768:P384MLKEM1024:DEFAULT
+    partition Common
+    signature-algorithms DEFAULT
+}
+root@(apm1)(cfg-sync Standalone)(ModuleNotLicensed::Active)(/Common)(tmos)# list ltm cipher rule SSL-Labs-A all-properties
+ltm cipher rule SSL-Labs-A {
+    app-service none
+    cipher TLS13-CHACHA20-POLY1305-SHA256:TLS13-AES256-GCM-SHA384:TLS13-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:!DES:!3DES:!RC4:!MD5:!EXPORT
+    description none
+    dh-groups DEFAULT
+    partition Common
+    signature-algorithms DEFAULT
+}
+```
 
 ## Expected Result
 
@@ -137,7 +158,7 @@ tmsh list ltm profile client-ssl
 ✅ Modern Cipher Suites Only
 The diagram below visualizes how the components interact within the F5 BIG-IP SSL termination layer, showing the flow from client connections through cipher negotiation, key exchange, and hash verification to the backend servers, while explicitly showing which weak algorithms are blocked.
 
-**Key Components:**
+## Key Components:
 
 **Cipher Selection** - TLS 1.3 and 1.2 approved cipher suites <br>
 **Key Exchange** - ECDHE with **Perfect Forward Secrecy** <br>
