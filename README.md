@@ -54,9 +54,9 @@ Notes:
 7. Finalize protocol behavior after negotiation.
 8. Authentication.
 9. Prevent certificate spoofing.
-10.Confirm all previous handshake messages are valid.
-11.Finalize TLS establishment. Secure encrypted channel established.
-12.BIG-IP decrypts and forwards traffic. Begin application communication.
+10. Confirm all previous handshake messages are valid.
+11. Finalize TLS establishment. Secure encrypted channel established.
+12. BIG-IP decrypts and forwards traffic. Begin application communication.
 
 ---
 ## TLS Cipher & PQC Selection
