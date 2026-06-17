@@ -1,3 +1,154 @@
+## Packet-Level TLS Handshake (TLS 1.3 + PQC)
+
+Visualizing the exact TLS negotiation path for TLS 1.3 with Hybrid Post-Quantum Cryptography on F5 BIG-IP.
+
+---
+
+### TLS Handshake Sequence (Packet Level)
+
+```mermaid
+sequenceDiagram
+    autonumber
+
+    participant Client
+    participant BIGIP as F5 BIG-IP
+    participant App
+
+    Note over Client,BIGIP: TCP 3-Way Handshake
+
+    Client->>BIGIP: SYN
+    BIGIP-->>Client: SYN-ACK
+    Client->>BIGIP: ACK
+
+    Note over Client,BIGIP: TLS 1.3 Negotiation Begins
+
+    Client->>BIGIP: ClientHello
+    Note right of Client:
+      TLS 1.3
+      Cipher Suites
+      Supported Groups
+      X25519MLKEM768
+      P256MLKEM768
+
+    BIGIP-->>Client: ServerHello
+    Note left of BIGIP:
+      Selected Group:
+      X25519MLKEM768
+
+    BIGIP-->>Client: EncryptedExtensions
+
+    BIGIP-->>Client: Certificate
+
+    BIGIP-->>Client: CertificateVerify
+
+    BIGIP-->>Client: Finished
+
+    Client->>BIGIP: Finished
+
+    Note over Client,BIGIP:
+      Encrypted Session Established
+
+    Client->>BIGIP: HTTPS Request
+
+    BIGIP->>App: HTTP Forward
+
+    App-->>BIGIP: Application Response
+
+    BIGIP-->>Client: TLS Encrypted Response
+```
+
+---
+
+## TLS Packet Mapping
+
+| Packet              | Direction       | Purpose                    |
+| ------------------- | --------------- | -------------------------- |
+| SYN                 | Client → BIG-IP | TCP Session Start          |
+| SYN-ACK             | BIG-IP → Client | TCP Acknowledgement        |
+| ClientHello         | Client → BIG-IP | Advertise TLS + PQC Groups |
+| ServerHello         | BIG-IP → Client | Select Cipher + KEM        |
+| EncryptedExtensions | BIG-IP → Client | TLS Negotiation Parameters |
+| Certificate         | BIG-IP → Client | Identity Validation        |
+| Finished            | Both Directions | Handshake Complete         |
+| Application Data    | Bidirectional   | HTTPS Traffic              |
+
+---
+
+## Capture Handshake with tcpdump
+
+Capture TLS traffic:
+
+```bash
+tcpdump -nn -s0 -i 0.0:nnn port 443 -w tls-pqc.pcap
+```
+
+Inspect handshake:
+
+```bash
+tcpdump -r tls-pqc.pcap
+```
+
+Extract TLS messages:
+
+```bash
+tshark \
+-r tls-pqc.pcap \
+-Y tls
+```
+
+---
+
+## Validate PQC Negotiation
+
+OpenSSL example:
+
+```bash
+openssl s_client \
+-connect www.madebeen.com:443 \
+-tls1_3 \
+-groups X25519MLKEM768
+```
+
+Expected output:
+
+```text
+TLSv1.3
+Server Temp Key:
+X25519MLKEM768
+```
+
+---
+
+## BIG-IP Verification
+
+View cipher rules:
+
+```bash
+tmsh list ltm cipher rule
+```
+
+Inspect PQC configuration:
+
+```bash
+tmsh list ltm cipher rule PQC all-properties
+```
+
+Inspect SSL profile:
+
+```bash
+tmsh list ltm profile client-ssl
+```
+
+---
+
+## Expected Result
+
+✅ SSL Labs A+
+✅ TLS 1.3 Enabled
+✅ Hybrid PQC Negotiated
+✅ HSTS Enabled
+✅ Forward Secrecy Enabled
+✅ Modern Cipher Suites Only
 The diagram below visualizes how the components interact within the F5 BIG-IP SSL termination layer, showing the flow from client connections through cipher negotiation, key exchange, and hash verification to the backend servers, while explicitly showing which weak algorithms are blocked.
 
 **Key Components:**
