@@ -1,4 +1,4 @@
-![f5 SSLLABs A+ using now PQC ciphers and Key Exchange algorithm](./images/image.png)
+![f5 SSLLABs A+ using now PQC ciphers and Key Exchange algorithm](./images/picture.png)
 
 ## Packet-Level TLS Handshake (TLS 1.3 + PQC)
 
