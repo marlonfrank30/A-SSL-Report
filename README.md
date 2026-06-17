@@ -2,6 +2,45 @@
 
 Visualizing the exact TLS negotiation path for TLS 1.3 with Hybrid Post-Quantum Cryptography on F5 BIG-IP.
 
+## TLS Negotiation Flow (TLS 1.3 + PQC Hybrid Key Exchange)
+
+```mermaid
+sequenceDiagram
+    autonumber
+
+    participant C as Client
+    participant F as F5 BIG-IP
+    participant A as Application
+
+    C->>F: ClientHello\nTLS 1.3\nSupported Groups:\nX25519MLKEM768,P256MLKEM768
+
+    F-->>C: ServerHello\nSelected:\nX25519MLKEM768
+
+    Note over C,F: Hybrid Post-Quantum Key Exchange
+
+    C->>F: KeyShare + PQC Material
+
+    F-->>C: EncryptedExtensions
+
+    F-->>C: Certificate
+
+    F-->>C: CertificateVerify
+
+    F-->>C: Finished
+
+    C->>F: Finished
+
+    Note over C,F: Secure TLS Session Established
+
+    C->>F: HTTPS Request
+
+    F->>A: Forward Request
+
+    A-->>F: Application Response
+
+    F-->>C: Encrypted HTTPS Response
+```
+
 ---
 
 ### TLS Handshake Sequence (Packet Level)
