@@ -44,18 +44,20 @@ sequenceDiagram
 ```
 Notes:
 
+
 1. Start the TCP session.
 2. Confirm the server is available and willing to establish the connection.
-3. Complete the TCP 3-Way Handshake.TCP connectivity is established.
-4. Tell BIG-IP what cryptographic capabilities the client supports.
-5. Confirm the negotiated cipher and PQC group.
-6. Finalize protocol behavior after negotiation.
-7. Authentication.
-8. Prevent certificate spoofing.
-9. Confirm all previous handshake messages are valid.
-10.Finalize TLS establishment. Secure encrypted channel established.
-11. BIG-IP decrypts and forwards traffic. Begin application communication.
-12. Deliver application data securely.
+3. TCP connectivity is established.
+4. Complete the TCP 3-Way Handshake.TCP connectivity is established.
+5. Tell BIG-IP what cryptographic capabilities the client supports.
+6. Confirm the negotiated cipher and PQC group.
+7. Finalize protocol behavior after negotiation.
+8. Authentication.
+9. Prevent certificate spoofing.
+10.Confirm all previous handshake messages are valid.
+11.Finalize TLS establishment. Secure encrypted channel established.
+12.BIG-IP decrypts and forwards traffic. Begin application communication.
+
 ---
 ## TLS Cipher & PQC Selection
 
