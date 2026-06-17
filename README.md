@@ -42,7 +42,29 @@ sequenceDiagram
 ```
 
 ---
+## TLS Cipher & PQC Selection
 
+```mermaid
+flowchart TD
+
+Start([Client Connect])
+
+Start --> TLS{TLS 1.3 Supported?}
+
+TLS -->|Yes| PQC{Client Advertises PQC Groups?}
+
+TLS -->|No| Reject[Reject Legacy Connection]
+
+PQC -->|Yes| Hybrid[Select X25519MLKEM768]
+
+PQC -->|No| Classic[Use ECDHE]
+
+Hybrid --> Session[Encrypted Session]
+
+Classic --> Session
+
+Session --> HTTPS[HTTPS Traffic]
+```
 ---
 
 ## TLS Packet Mapping
