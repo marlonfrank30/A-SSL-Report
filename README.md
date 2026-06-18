@@ -196,7 +196,7 @@ ltm cipher rule SSL-Labs-A {
 ✅ Forward Secrecy Enabled
 ✅ Modern Cipher Suites Only
 The diagram below visualizes how the components interact within the F5 BIG-IP SSL termination layer, showing the flow from client connections through cipher negotiation, key exchange, and hash verification to the backend servers, while explicitly showing which weak algorithms are blocked.
-
+source: https://my.f5.com/manage/s/article/K000149577
 ## OLDER VERSIONS OVER THE YEARS...
 
 ### Key Components:
